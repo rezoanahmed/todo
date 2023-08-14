@@ -1,45 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Advanced Todo App</title>
     <style>
-        body{
+        body {
             background-color: rgb(229, 229, 229);
         }
-        section{
-            width: 500px;
-            margin: 20px auto;
+        h1{
+            text-align: center;
         }
-        input{
+        .section {
+            background-color: rgba(210,210,210);
+            height: 500px;
+            width: 500px;
+            margin: 50px auto;
+            border: 2px solid black;
+            border-radius: 10px;
+            padding: 10px;
+            overflow: auto;
+        }
+        .flex{
+            display: flex;
+            gap: 5px;
+            justify-content: center;
+            align-items: center;
+        }
+        .list{
+            padding: 2px 100px;
+            text-align: justify;
+        }
+        
+        input {
             background-color: rgba(228, 228, 228, 0.875);
             padding: 9px 18px;
             border: 2px solid black;
             border-radius: 5px;
         }
-        #add{
+
+        #add {
             padding: 10px;
             border: 2px solid transparent;
             transition: .5s ease-in-out;
             border-radius: 5px;
         }
-        button:hover{
+
+        button:hover {
             border: 2px solid black;
             transition: .5s ease-in-out;
         }
-        #add{
+
+        #add {
             background-color: green;
             color: white;
         }
     </style>
 </head>
+
 <body>
-    <section>
+    <section class="section">
         <h1>Today's Todo List</h1>
-        <input id="todo" type="text" placeholder="What's the new task?">
-        <button id="add">Add</button>
-        <ol id="ol"></ol>
+        <section class="flex">
+            <input id="todo" type="text" placeholder="What's the new task?">
+            <button id="add">Add</button>
+        </section>
+        <section class="list">
+            <ol id="ol"></ol>
+        </section>
     </section>
 
 
@@ -48,20 +77,20 @@
         let todo = document.getElementById("todo");
         let add = document.getElementById("add");
         let ol = document.getElementById("ol");
-        
+
         // added event listener
-        add.addEventListener('click', ()=>{
+        add.addEventListener('click', () => {
             let addedTodo = todo.value;
             let li = document.createElement("li");
             li.innerText = addedTodo;
-            
+
             // styles for list
             li.style.margin = "5px";
             li.style.padding = "5px";
 
             // delete button
             let deleteButton = document.createElement("button");
-            deleteButton.innerText="Delete";
+            deleteButton.innerText = "Delete";
             deleteButton.style.color = "red";
             deleteButton.style.padding = "2px";
             deleteButton.style.margin = "5px";
@@ -69,7 +98,7 @@
             ol.appendChild(li);
             li.appendChild(deleteButton);
 
-            deleteButton.addEventListener('click', ()=>{
+            deleteButton.addEventListener('click', () => {
                 li.style.display = "none";
             });
 
@@ -78,4 +107,5 @@
         });
     </script>
 </body>
+
 </html>
