@@ -10,7 +10,7 @@
             border: 2px solid black;
             border-radius: 5px;
         }
-        button{
+        #add{
             padding: 10px;
             border: 2px solid transparent;
             transition: .5s ease-in-out;
@@ -31,6 +31,41 @@
         <h1>Today's Todo List</h1>
         <input id="todo" type="text" placeholder="What's the new task?">
         <button id="add">Add</button>
+        <ol id="ol"></ol>
     </section>
+
+
+    <script>
+        // initialized
+        let todo = document.getElementById("todo");
+        let add = document.getElementById("add");
+        let ol = document.getElementById("ol");
+        
+        // added event listener
+        add.addEventListener('click', ()=>{
+            let addedTodo = todo.value;
+            let li = document.createElement("li");
+            li.innerText = addedTodo;
+            
+            // styles for list
+            li.style.margin = "5px";
+            li.style.padding = "5px";
+
+            // delete button
+            let deleteButton = document.createElement("button");
+            deleteButton.innerText="Delete";
+            deleteButton.style.color = "red";
+            deleteButton.style.padding = "2px";
+            deleteButton.style.margin = "5px";
+
+            ol.appendChild(li);
+            li.appendChild(deleteButton);
+
+            deleteButton.addEventListener('click', ()=>{
+                li.style.display = "none";
+            });
+
+        });
+    </script>
 </body>
 </html>
